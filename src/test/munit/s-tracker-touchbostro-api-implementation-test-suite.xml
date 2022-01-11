@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+	xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<munit:config name="s-tracker-touchbostro-api-implementation-test-suite.xml" />
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="ea7bfb9a-f71d-471d-a132-788c40b6b583" >
+		<http:request-connection host="localhost" port="8082" />
+	</http:request-config>
+	<munit:test name="s-tracker-touchbostro-api-implementation-test-suite-s-tracker-touchbostro-api-implementationFlowTest" doc:id="d9ab9d50-e52d-4b49-b2ff-0888fdc8ccb7" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="http:request" doc:id="b3b22641-4c00-492d-87db-4313bbe595a9" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="requestToHelloPackage" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="09822da7-5c07-44ac-8549-aaf765138a20" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="1dad7433-433f-4a78-94b5-56cf4984dc1c" >
+				<munit:attributes value='#[{"queryParams": {"key": "DLZpM2Fz4jKalacRoTORqaw2R","type" : "excel","trackingNumber":"1Z81T8T2A892216687"}}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to s-tracker-touchbostro-api-implementationFlow" doc:id="dde349ff-ae1a-4319-b702-ef55d7f68964" name="s-tracker-touchbostro-api-implementationFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call" doc:id="2613887c-1e24-4a1a-9473-cbea8478cc45" processor="module-logging:log-exit">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="End Logger" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="c2811051-a2c2-4fef-a2d0-84d602f12c2f" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="s-tracker-touchbostro-api-implementation-test-suite-s-tracker-touchbostro-api-implementationFlowTest-ANY" doc:id="5e948446-8769-4a9d-bea3-b7d4cbb3a7ae" description="Test" expectedErrorType="ANY">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="http:request" doc:id="f06612b0-4f2a-4213-97e4-5a92e0c0da36" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="requestToHelloPackage" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="09822da7-5c07-44ac-8549-aaf765138a20" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="ANY" />
+				</munit-tools:then-return>
+			
+</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="e2d55611-c488-4382-b326-79bb634db1e8" >
+				<munit:attributes value='#[{"queryParams": {"key": "DLZpM2Fz4jKalacRoTORqaw2R","type" : "excel","trackingNumber":"1Z81T8T2A892216687"}}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to s-tracker-touchbostro-api-implementationFlow" doc:id="6424e6d7-948c-481d-822e-31fb112efde2" name="s-tracker-touchbostro-api-implementationFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call" doc:id="195a9ffd-690e-4f8f-a711-76b47e47ef2f" processor="module-logging:log-exit">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="End Logger" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="c2811051-a2c2-4fef-a2d0-84d602f12c2f" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="s-tracker-touchbostro-api-implementation-test-suite-authorizationFlowTest-default" doc:id="9fd4f587-d725-4ffe-9f46-4169e8694a0d" description="Test">
+		<munit:enable-flow-sources >
+			<munit:enable-flow-source value="touch-bistro-tracker-main" />
+			<munit:enable-flow-source value="s-tracker-touchbostro-api-implementationFlow" />
+		</munit:enable-flow-sources>
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="353650ce-977d-4d67-ab2d-9a71f38ae71b" >
+				<munit:attributes value='#[{"headers": {"client_id": "C88E4566","client_secret" : "F1239BCpp1C78A7"}}]' />
+			</munit:set-event>
+			<http:request method="GET" doc:name="Calling Tracker Api" doc:id="30336bee-2bf8-4f2e-aed8-d2ba4a1cb329" config-ref="HTTP_Request_configuration" path="/api/tracker">
+				<http:headers ><![CDATA[#[output application/java
+---
+{
+	"client_secret" : "C88E4",
+	"client_id" : "F1239BC1C78A7"
+}]]]></http:headers>
+				<http:response-validator >
+					<http:success-status-code-validator values="200..500" />
+				</http:response-validator>
+			</http:request>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="s-tracker-touchbostro-api-implementation-test-suite-authorizationFlowTest" doc:id="04f43b37-297b-4366-ad71-9e6ff9a057cf" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="11abe120-0dee-4e3b-aaf3-b938ac0f886f" >
+				<munit:attributes value='#[{"headers": {"client_id": "C88E4","client_secret" : "F1239BC1C78A7"}}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to authorizationFlow" doc:id="b85bd6f1-a5dc-4350-9956-5108aab2805d" name="authorizationFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call" doc:id="2b56087f-013b-41d1-b362-c95ea3952f3b" processor="logger">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Auth Success" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="2e669b3c-b639-4721-a0d4-0f7bbed04332" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	
+
+
+</mule>

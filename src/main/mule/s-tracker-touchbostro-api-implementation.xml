@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:module-logging="http://www.mulesoft.org/schema/mule/module-logging"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/module-logging http://www.mulesoft.org/schema/mule/module-logging/current/mule-module-logging.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="authorizationFlow" doc:id="770f7319-207a-436e-b2f4-5dbbdb4982ed" >
+		<choice doc:name="checkAuthorization" doc:id="7b90f420-40c8-4c60-b4fc-d416ee88692f" >
+			<when expression="#[(attributes.headers.client_id == p('client.id')) and (attributes.headers.client_secret ==p('client.secret'))]">
+				<logger level="INFO" doc:name="Auth Success" doc:id="2e669b3c-b639-4721-a0d4-0f7bbed04332" message="Auth Success"/>
+			</when>
+			<otherwise >
+				<set-payload value="Credentials Incorrect" doc:name="Credentials Incorrect" doc:id="11586524-f36c-45cd-8d98-34f8efc8f803" />
+				<raise-error doc:name="Credentials Incorrect" doc:id="0e8b40df-d8cc-4865-b040-adb05ba0fe71" type="CREDENTIALS:INVALID" description="Credentials Incorrect"/>
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="s-tracker-touchbostro-api-implementationFlow" doc:id="8b347aad-8653-48ee-92e4-1c7ac551f9d0" >
+		<module-logging:log-entry doc:name="Start Logger" doc:id="acd4313d-70a7-495b-8297-05ba95a5490a" message='#["s-tracker-touchbostro-api-implementationFlow started for tracking id: " ++ attributes.queryParams.trackingNumber as String]'/>
+		<http:request method="GET" doc:name="requestToHelloPackage" doc:id="09822da7-5c07-44ac-8549-aaf765138a20" config-ref="Tracker_config" path="/api/package" responseTimeout="20000">
+			<http:query-params><![CDATA[#[%dw 2.0
+output application/json
+---
+{
+	"key" : p('secure::helloPackage.key'),
+	"type" : "excel",
+	"number" : attributes.queryParams[0]
+}]]]></http:query-params>
+		</http:request>
+		<module-logging:log-exit doc:name="End Logger" doc:id="c2811051-a2c2-4fef-a2d0-84d602f12c2f" message='#[//"s-tracker-touchbostro-api-implementationFlow ended for tracking id: " ++ payload //.response.package_responses.tracking_number[0]&#10;&#10;payload]' />
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="540fa894-237f-4494-a50f-8aabcbb50679" type="ANY">
+				<ee:transform doc:name="Transform Message" doc:id="5661e366-6c6f-448b-9e69-298f820f88bc" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message" : error.description
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

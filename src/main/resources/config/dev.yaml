@@ -1,0 +1,29 @@
+maskValues: "ssn,lastName"
+
+loggingFramework:
+   logTo:
+    info: "datadog,default"
+    debug: "datadog,default"
+    warn: "datadog,default"
+    fatal: "datadog,default"
+    error: "datadog,default"
+    "trace": "datadog,default"
+    
+datadogConfig:
+  protocol: "HTTPS"
+  host: "http-intake.logs.datadoghq.com"
+  basepath: "/v1/input"
+  apikey: "03a47d7f94cea55ad22932918103baac"
+  retryCount: "5"
+  retryIntervalInMilliseconds: "60000"
+  source: "Mulesoft"
+  service: "loggingApp"
+  ddtags: "env:localTest"
+  
+helloPackage:
+  protocol: "HTTPS"
+  host: "hellopackage.app"
+
+client:
+  id: "C88E4"
+  secret: "F1239BC1C78A7"

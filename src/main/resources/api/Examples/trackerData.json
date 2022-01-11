@@ -1,0 +1,52 @@
+{
+  "response": {
+    "provider": "UPS",
+    "package_responses": [
+      {
+        "tracking_number": "1Z81T8T2A892216687",
+        "updates": [
+          {
+            "date_time": "2021-10-01T22:01:00Z",
+            "location": {
+              "city": "Spartanburg",
+              "state": "SC",
+              "country": "US",
+              "country_code": "US"
+            },
+            "status": "Departed from Facility",
+            "delivered": false
+          }
+        ],
+        "expected": {
+          "delivery": "",
+          "expected": "2021-10-07T00:00:00Z"
+        },
+        "url": "https://www.ups.com/track?loc=null&tracknum=1Z81T8T2A892216687&requester=WT/trackdetails",
+        "origin": {
+          "date": "0001-01-01T00:00:00Z",
+          "location": {
+            "city": "O FALLON",
+            "state": "MO",
+            "country": "US",
+            "country_code": "US"
+          }
+        },
+        "destination": {
+          "date": "0001-01-01T00:00:00Z",
+          "location": {
+            "city": "NORTH HOLLYWOOD",
+            "state": "CA",
+            "country": "US",
+            "country_code": "US"
+          }
+        },
+        "weight": "13.00 LBS",
+        "shipment_weight": "30.00 LBS",
+        "service": "UPS Ground",
+        "packaging": "",
+        "pieces": "2",
+        "reference": ""
+      }
+    ]
+  }
+}

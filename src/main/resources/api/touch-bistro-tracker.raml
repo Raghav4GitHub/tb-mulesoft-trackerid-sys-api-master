@@ -1,0 +1,19 @@
+#%RAML 1.0
+title: touch-bistro-tracker
+description: Tracker System API for touchBistro
+
+traits:
+  commonError: !include /trait/errorResponses.raml
+  client-id-required: !include trait/clientIdRequiredtrait.raml
+
+/tracker:
+  is: [commonError]
+  get:
+    is: [client-id-required]
+    description: track product .
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include /DataTypes/trackerDataType.raml
+            example: !include /Examples/trackerData.json

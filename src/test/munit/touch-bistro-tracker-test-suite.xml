@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="touch-bistro-tracker-test-suite.xml" />
+	<munit:test name="touch-bistro-tracker-test-suite-touch-bistro-tracker-mainTest-APIKIT:BAD_REQUEST" doc:id="d11b4250-ebfc-4532-8517-990e16fecce8" description="Test" expectedErrorType="APIKIT:BAD_REQUEST">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="457ed95d-bc14-4bcd-af2f-701fe2361bc9" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="authorizationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="0b48083c-4c95-44bb-86c6-bec1448efb09" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="apikit:router" doc:id="1a9024c3-6d82-4019-9665-44c5c8b093bc" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="touch-bistro-tracker-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to touch-bistro-tracker-main" doc:id="8116b878-ca0e-47c9-8a96-824ea1f9f8b0" name="touch-bistro-tracker-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="touch-bistro-tracker-test-suite-touch-bistro-tracker-mainTest-APIKIT:NOT_FOUND" doc:id="7ddcd8d2-4c47-4ec0-86b8-2cc0a5bed937" description="Test" expectedErrorType="APIKIT:NOT_FOUND">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="e2260796-24ab-4923-ba1f-549d1209caa1" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="authorizationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="0b48083c-4c95-44bb-86c6-bec1448efb09" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="apikit:router" doc:id="7b30fc24-b9e9-45f8-bcf5-a0ed5ac38718" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="touch-bistro-tracker-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			
+</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to touch-bistro-tracker-main" doc:id="e3c5e208-efd6-4fbf-b88b-36484246f2a0" name="touch-bistro-tracker-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="touch-bistro-tracker-test-suite-touch-bistro-tracker-mainTest-APIKIT:METHOD_NOT_ALLOWED" doc:id="da2f1076-14bd-427b-b478-b1abdb5bf8e8" description="Test" expectedErrorType="APIKIT:METHOD_NOT_ALLOWED">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="ee58c8fa-7fc0-4dbc-b29f-bb7c647d2fd9" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="authorizationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="0b48083c-4c95-44bb-86c6-bec1448efb09" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="apikit:router" doc:id="26271555-1598-47c0-b4ab-312e326752e5" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="touch-bistro-tracker-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			
+</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to touch-bistro-tracker-main" doc:id="df39c8ba-7623-4beb-974a-a8608e1052e8" name="touch-bistro-tracker-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="touch-bistro-tracker-test-suite-touch-bistro-tracker-mainTest-APIKIT:NOT_ACCEPTABLE" doc:id="955b9a60-4fba-4638-a892-46bcd0be6672" description="Test" expectedErrorType="APIKIT:NOT_ACCEPTABLE">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="d6af64c7-987b-470c-bf7e-aa034e06868e" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="authorizationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="0b48083c-4c95-44bb-86c6-bec1448efb09" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="apikit:router" doc:id="6cebfad8-afc7-46a5-bf0c-655941237bd5" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="touch-bistro-tracker-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			
+</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to touch-bistro-tracker-main" doc:id="4182e0b3-b871-4a90-8327-701f469b52cc" name="touch-bistro-tracker-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="touch-bistro-tracker-test-suite-touch-bistro-tracker-mainTest-APIKIT:UNSUPPORTED_MEDIA_TYPE" doc:id="2c644707-96f5-4dca-b57b-8b05aabb93c3" description="Test" expectedErrorType="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="f69130a5-00d6-437a-a665-a7684400e0ad" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="authorizationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="0b48083c-4c95-44bb-86c6-bec1448efb09" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="apikit:router" doc:id="1681ea20-46f5-41c1-b704-54709001bdd7" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="touch-bistro-tracker-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			
+</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to touch-bistro-tracker-main" doc:id="f123a49e-4f8b-4eb1-af5d-1bb5ce034aa0" name="touch-bistro-tracker-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="touch-bistro-tracker-test-suite-touch-bistro-tracker-mainTest-APIKIT:NOT_IMPLEMENTED" doc:id="ba54b491-6473-44f5-95f7-56d31565f75e" description="Test" expectedErrorType="APIKIT:NOT_IMPLEMENTED">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="57b07907-35f0-430e-b9ba-3d0dfdee057a" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="authorizationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="0b48083c-4c95-44bb-86c6-bec1448efb09" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="apikit:router" doc:id="98f68594-f5f4-4fa5-9e27-932850b48bfd" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="touch-bistro-tracker-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_IMPLEMENTED" />
+				</munit-tools:then-return>
+			
+</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to touch-bistro-tracker-main" doc:id="de0c3d0d-3f52-44be-8341-971377c85430" name="touch-bistro-tracker-main"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="touch-bistro-tracker-test-suite-get:\tracker:touch-bistro-tracker-configTest" doc:id="74a2098f-95c5-4618-9e71-704961fc4d8f" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="flow-ref" doc:id="c13f2775-8a23-4508-86a0-0149b36aac9f" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="s-tracker-touchbostro-api-implementationFlow" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="8d124a28-cf77-4a59-b328-8c1ea0032f40" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\tracker:touch-bistro-tracker-config" doc:id="79c5c23c-7e96-4779-8f1c-f2adf6381f7a" name="get:\tracker:touch-bistro-tracker-config"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>

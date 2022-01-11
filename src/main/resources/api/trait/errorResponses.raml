@@ -1,0 +1,46 @@
+#%RAML 1.0 Trait
+description: common errors of the api
+
+responses: 
+  400:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Bad Request"}
+  401:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Unauthorized"}
+  403:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Forbidden"}
+  404:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Resource Not Found"}
+  405:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Method Not Allowed"}
+  415:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Unsupported Media Type"}
+  500:
+    body: 
+      application/json:
+        type: !include /DataTypes/errorResponseDataType.raml
+        example: |
+          {"message":"Internal Server Error"}
