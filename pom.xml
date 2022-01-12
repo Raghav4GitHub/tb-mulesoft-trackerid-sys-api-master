@@ -144,6 +144,12 @@
 			<version>1.0.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>956b4ba8-531d-4a71-965b-c779a110aa3f</groupId>
+			<artifactId>touchbistro-generic-logging-connector</artifactId>
+			<version>1.0.3</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
