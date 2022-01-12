@@ -164,6 +164,12 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+			<id>TBRepository</id>
+			<name>Corporate Repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/956b4ba8-531d-4a71-965b-c779a110aa3f/maven</url>
+			<layout>default</layout>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
