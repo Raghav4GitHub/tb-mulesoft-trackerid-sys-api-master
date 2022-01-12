@@ -89,18 +89,6 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-			<groupId>com.touchbistro.framework</groupId>
-			<artifactId>touchbistro-generic-logging-connector</artifactId>
-			<version>1.0.1</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.touchbistro.framework</groupId>
-			<artifactId>touchbistro-generic-errorhandler</artifactId>
-			<version>1.0.3-SNAPSHOT</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
 			<groupId>org.mule.connectors</groupId>
 			<artifactId>mule-sftp-connector</artifactId>
 			<version>1.3.7</version>
