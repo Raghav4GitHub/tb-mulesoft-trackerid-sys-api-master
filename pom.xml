@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.mycompany</groupId>
 	<artifactId>s-tracker-touchbistro-api</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
-	<name>s-tracker-touchbistro-api-11-10-21</name>
-
+	<name>touchbistro-deliverytracker-sys-api</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<app.runtime>4.3.0-20210622</app.runtime>
+		<app.runtime>4.3.0-20210915</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 		<munit.version>2.3.5</munit.version>
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -52,7 +47,6 @@
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<failBuild>false</failBuild>
-
 						<requiredApplicationCoverage>90</requiredApplicationCoverage>
 						<requiredResourceCoverage>0</requiredResourceCoverage>
 						<requiredFlowCoverage>0</requiredFlowCoverage>
@@ -63,14 +57,12 @@
 						<ignoreFiles>
 							<ignoreFile>org/mule/extensions/smart/connector/module-logging.xml</ignoreFile>
 							<ignoreFile>touchbistro-generic-error-handler.xml</ignoreFile>
-
 						</ignoreFiles>
 					</coverage>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
@@ -94,6 +86,18 @@
 			<groupId>com.mulesoft.modules</groupId>
 			<artifactId>mule-secure-configuration-property-module</artifactId>
 			<version>1.2.3</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.touchbistro.framework</groupId>
+			<artifactId>touchbistro-generic-logging-connector</artifactId>
+			<version>1.0.1</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.touchbistro.framework</groupId>
+			<artifactId>touchbistro-generic-errorhandler</artifactId>
+			<version>1.0.3-SNAPSHOT</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
@@ -153,7 +157,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v2</id>
@@ -168,7 +171,6 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>mulesoft-releases</id>
@@ -180,5 +182,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
